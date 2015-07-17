@@ -1,0 +1,13 @@
+<h1>{{ movie.title }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'movies:submit' %}" method="post">
+{% csrf_token %}
+	Title: <input type="text" name="title"/><br>
+	Director: <input type="text" name="director"/><br>
+	Release Date: <input type="date" name="date_released"/><br>
+	Watch Date: <input type="date" name="date_watched"/><br>
+	IMDB Score: <input type="number" name="imdb_score" /><br>
+	<input type="submit" value="Submit" />
+</form>

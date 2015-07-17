@@ -1,0 +1,4 @@
+menv
+*.pyc
+staticfiles
+settings.py

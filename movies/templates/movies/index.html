@@ -1,0 +1,100 @@
+{% extends "movies/base.html" %}
+
+{% block title %} Movies I've Watched {% endblock %}
+
+{% block content %}
+  <div class="container">
+  	<div class="row">
+      <div class="col-md-12">
+        <h1>I've watched {{ num_movies }} movies...</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <hr>
+      </div>
+    </div>
+
+    <div class="row btn-group" data-toggle="buttons">
+      <label class="btn btn-primary active" id="optionwatch">
+        <input type="radio" name="options" onclick="sortbyWatch();" checked="false"> Sort by Watch Date
+      </label>
+      <label class="btn btn-primary" id="optionrelease">
+        <input type="radio" name="options"  onclick="sortbyRelease();" checked="false"> Sort by Release Date
+      </label>
+      <label class="btn btn-primary" id="optiontitle">
+        <input type="radio" name="options" onclick="sortbyTitle();" checked="true"> Sort by Title
+      </label>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <hr>
+      </div>
+    </div>
+
+  	<div class="row" id="titleview" style="display: none;">
+      <div class="col-md-12">
+    		{% for movie in movie_list_title %}
+          <h3><a href="{{ movie.imdb_link }}">{{ movie.title }}</a> ({{ movie.release_date.year }})</h3>
+          {% if movie.watch_date.year > 1900 %}
+  		      <h5>Watched {{ movie.watch_date }}</h5>
+          {% endif %}
+  		  {% endfor %}
+    </div>
+  	</div>
+
+    <div class="row" id="watchview" style="display: block;">
+      <div class="col-md-12">
+        {% for movie in movie_list_watch %}
+          <h3><a href="{{ movie.imdb_link }}">{{ movie.title }}</a> ({{ movie.release_date.year }})</h3>
+          {% if movie.watch_date.year > 1900 %}
+  		      <h5>Watched {{ movie.watch_date }}</h5>
+          {% endif %}
+        {% endfor %}
+    </div>
+    </div>
+
+    <div class="row" id="releaseview" style="display: none;">
+      <div class="col-md-12">
+        {% for movie in movie_list_release %}
+          <h3><a href="{{ movie.imdb_link }}">{{ movie.title }}</a> ({{ movie.release_date.year }})</h3>
+          {% if movie.watch_date.year > 1900 %}
+  		      <h5>Watched {{ movie.watch_date }}</h5>
+          {% endif %}
+        {% endfor %}
+    </div>
+    </div>
+  </div>
+
+  <script>
+    function sortbyRelease() {
+    document.getElementById('titleview').style.display = 'none';
+    document.getElementById('watchview').style.display = 'none';
+    document.getElementById('releaseview').style.display = 'block';
+    document.getElementById('optiontitle').className = "btn btn-primary";
+    document.getElementById('optionwatch').className = "btn btn-primary";
+    document.getElementById('optionrelease').className = "btn btn-primary active";
+
+    }
+    function sortbyWatch() {
+    document.getElementById('releaseview').style.display = 'none';
+    document.getElementById('titleview').style.display = 'none';
+    document.getElementById('watchview').style.display = 'block';
+    document.getElementById('optionrelease').className = "btn btn-primary";
+    document.getElementById('optiontitle').className = "btn btn-primary";
+    document.getElementById('optionwatch').className = "btn btn-primary active";
+    }
+
+    function sortbyTitle() {
+    document.getElementById('releaseview').style.display = 'none';
+    document.getElementById('watchview').style.display = 'none';
+    document.getElementById('titleview').style.display = 'block';
+    document.getElementById('optionrelease').className = "btn btn-primary";
+    document.getElementById('optionwatch').className = "btn btn-primary";
+    document.getElementById('optiontitle').className = "btn btn-primary active";
+    }
+
+  </script>
+
+{% endblock %}
