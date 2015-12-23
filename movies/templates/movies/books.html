@@ -1,4 +1,4 @@
-{% extends "books/base.html" %}
+{% extends "movies/base.html" %}
 
 {% block title %} Books I've Read {% endblock %}
 
@@ -17,10 +17,10 @@
 
     <div class="row col-md-12" data-toggle="buttons">
         <label class="btn btn-primary active" id="optionwatch">
-          <input type="radio" name="options" onclick="sortbyWatch();"> Sort by Watch Date
+          <input type="radio" name="options" onclick="sortbyWatch();"> Sort by Finish Date
         </label>
         <label class="btn btn-primary" id="optionrelease">
-          <input type="radio" name="options"  onclick="sortbyRelease();"> Sort by Release Date
+          <input type="radio" name="options"  onclick="sortbyRelease();"> Sort by Publish Date
         </label>
         <label class="btn btn-primary" id="optiontitle">
           <input type="radio" name="options" onclick="sortbyTitle();"> Sort by Title

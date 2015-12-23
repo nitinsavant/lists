@@ -18,6 +18,5 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^movies/', include('movies.urls', namespace="movies")),
-    url(r'^books/', include('books.urls', namespace="books")),
+    url(r'^lists/', include('movies.urls', namespace="movies")),
 ]
