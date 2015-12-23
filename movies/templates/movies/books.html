@@ -17,7 +17,7 @@
 
     <div class="row col-md-12" data-toggle="buttons">
         <label class="btn btn-primary active" id="optionwatch">
-          <input type="radio" name="options" onclick="sortbyWatch();"> Sort by Finish Date
+          <input type="radio" name="options" onclick="sortbyWatch();"> Sort by Read Date
         </label>
         <label class="btn btn-primary" id="optionrelease">
           <input type="radio" name="options"  onclick="sortbyRelease();"> Sort by Publish Date
@@ -38,7 +38,7 @@
     		{% for book in book_list_title %}
           <h3><a href="{{ book.title_link }}">{{ book.title }}</a> ({{ book.release_date.year }}) by {{ book.author }}</h3>
           {% if book.watch_date.year > 1900 %}
-  		      <h5>Finished {{ book.watch_date }}</h5>
+  		      <h5>Read {{ book.watch_date }}</h5>
           {% endif %}
   		  {% endfor %}
     </div>
@@ -49,7 +49,7 @@
         {% for book in book_list_watch %}
           <h3><a href="{{ book.title_link }}">{{ book.title }}</a> ({{ book.release_date.year }}) by {{ book.author }}</h3>
           {% if book.watch_date.year > 1900 %}
-  		      <h5>Finished {{ book.watch_date }}</h5>
+  		      <h5>Read {{ book.watch_date }}</h5>
           {% endif %}
         {% endfor %}
     </div>
@@ -60,7 +60,7 @@
         {% for book in book_list_release %}
           <h3><a href="{{ book.title_link }}">{{ book.title }}</a> ({{ book.release_date.year }}) by {{ book.author }}</h3>
           {% if book.watch_date.year > 1900 %}
-  		      <h5>Finished {{ book.watch_date }}</h5>
+  		      <h5>Read {{ book.watch_date }}</h5>
           {% endif %}
         {% endfor %}
     </div>
