@@ -1,4 +1,4 @@
-#!/Users/Nitin/Documents/lists/menv/bin/python2.7
+#!/Users/Nitin/Dropbox/lists/menv/bin/python2.7
 from django.core import management
 
 if __name__ == "__main__":

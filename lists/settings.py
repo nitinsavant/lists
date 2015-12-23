@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'trm^+uqww85_b6(lu%fw*urelt+m0pdo35)8g8r1q_4rlk_hmb'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ALLOWED_HOSTS = []
@@ -123,7 +123,7 @@ STATIC_URL = '/static/'
 ## Production Heroku settings
 # Parse database configuration from $DATABASE_URL
 import dj_database_url
-DATABASES['default'] = dj_database_url.config()
+# DATABASES['default'] = dj_database_url.config()
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
