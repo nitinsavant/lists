@@ -23,8 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'trm^+uqww85_b6(lu%fw*urelt+m0pdo35)8g8r1q_4rlk_hmb'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-TEMPLATE_DEBUG = DEBUG
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -60,6 +59,7 @@ TEMPLATES = [
         'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
+            'debug':DEBUG,
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
@@ -76,29 +76,17 @@ WSGI_APPLICATION = 'lists.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
-## development
+# production
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "movies_db",
-        "USER": "admin",
-        "PASSWORD": "$h@wshank!",
-        "HOST": "",
-        "PORT": "",
+        "NAME": "dozing-softly-5509",
+        "USER": "sqyeqbmsdvgsrw",
+        "PASSWORD": "0MImFlWd7DtCd6DOaGQFwz-nX_",
+        "HOST": "ec2-54-204-13-220.compute-1.amazonaws.com",
+        "PORT": "5432",
     }
 }
-
-## production
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.postgresql_psycopg2",
-#         "NAME": "dozing-softly-5509",
-#         "USER": "sqyeqbmsdvgsrw",
-#         "PASSWORD": "0MImFlWd7DtCd6DOaGQFwz-nX_",
-#         "HOST": "ec2-54-204-13-220.compute-1.amazonaws.com",
-#         "PORT": "5432",
-#     }
-# }
 
 
 # Internationalization
@@ -123,7 +111,7 @@ STATIC_URL = '/static/'
 ## Production Heroku settings
 # Parse database configuration from $DATABASE_URL
 import dj_database_url
-# DATABASES['default'] = dj_database_url.config()
+DATABASES['default'] = dj_database_url.config()
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
@@ -140,3 +128,9 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     'movies/static',
 )
+
+#try to load local_settings.py if it exists
+try:
+    from local_settings import *
+except ImportError:
+    pass
