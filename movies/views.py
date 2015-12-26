@@ -20,10 +20,12 @@ def books(request):
 	book_list_title = Book.objects.order_by('title')
 	book_list_watch = Book.objects.order_by('-watch_date', '-release_date')
 	book_list_release = Book.objects.order_by('-release_date')
+	book_list_author = Book.objects.order_by('author')
 	num_books = Book.objects.count()
 	context = {'book_list_title': book_list_title,
 				'book_list_watch': book_list_watch,
 				'book_list_release': book_list_release,
+				'book_list_author': book_list_author,
 				'num_books': num_books,
 				}
 	return render(request, 'movies/books.html', context)

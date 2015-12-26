@@ -25,6 +25,9 @@
         <label class="btn btn-primary" id="optiontitle">
           <input type="radio" name="options" onclick="sortbyTitle();"> Sort by Title
         </label>
+        <label class="btn btn-primary" id="optionauthor">
+          <input type="radio" name="options" onclick="sortbyAuthor();"> Sort by Author
+        </label>
     </div>
 
     <div class="row">
@@ -65,34 +68,62 @@
         {% endfor %}
     </div>
     </div>
+
+    <div class="row" id="authorview" style="display: none;">
+      <div class="col-md-12">
+        {% for book in book_list_author %}
+          <h3><a href="{{ book.title_link }}">{{ book.title }}</a> ({{ book.release_date.year }}) by {{ book.author }}</h3>
+          {% if book.watch_date.year > 1900 %}
+            <h5>Read {{ book.watch_date }}</h5>
+          {% endif %}
+        {% endfor %}
+    </div>
+    </div>
   </div>
 
   <script>
     function sortbyRelease() {
     document.getElementById('titleview').style.display = 'none';
     document.getElementById('watchview').style.display = 'none';
+    document.getElementById('authorview').style.display = 'none';
     document.getElementById('releaseview').style.display = 'block';
     document.getElementById('optiontitle').className = "btn btn-primary";
     document.getElementById('optionwatch').className = "btn btn-primary";
+    document.getElementById('optionauthor').className = "btn btn-primary";
     document.getElementById('optionrelease').className = "btn btn-primary active";
 
     }
     function sortbyWatch() {
     document.getElementById('releaseview').style.display = 'none';
     document.getElementById('titleview').style.display = 'none';
+    document.getElementById('authorview').style.display = 'none';
     document.getElementById('watchview').style.display = 'block';
     document.getElementById('optionrelease').className = "btn btn-primary";
     document.getElementById('optiontitle').className = "btn btn-primary";
+    document.getElementById('optionauthor').className = "btn btn-primary";
     document.getElementById('optionwatch').className = "btn btn-primary active";
     }
 
     function sortbyTitle() {
     document.getElementById('releaseview').style.display = 'none';
     document.getElementById('watchview').style.display = 'none';
+    document.getElementById('authorview').style.display = 'none';
     document.getElementById('titleview').style.display = 'block';
     document.getElementById('optionrelease').className = "btn btn-primary";
     document.getElementById('optionwatch').className = "btn btn-primary";
+    document.getElementById('optionauthor').className = "btn btn-primary";
     document.getElementById('optiontitle').className = "btn btn-primary active";
+    }
+
+    function sortbyAuthor() {
+    document.getElementById('releaseview').style.display = 'none';
+    document.getElementById('watchview').style.display = 'none';
+    document.getElementById('titleview').style.display = 'none';
+    document.getElementById('authorview').style.display = 'block';
+    document.getElementById('optionrelease').className = "btn btn-primary";
+    document.getElementById('optionwatch').className = "btn btn-primary";
+    document.getElementById('optiontitle').className = "btn btn-primary";
+    document.getElementById('optionauthor').className = "btn btn-primary active";
     }
 
   </script>
