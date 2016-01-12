@@ -20,7 +20,7 @@
           <input type="radio" name="options" onclick="sortbyWatch();"> Sort by Read Date
         </label>
         <label class="btn btn-primary" id="optionrelease">
-          <input type="radio" name="options"  onclick="sortbyRelease();"> Sort by Publish Date
+          <input type="radio" name="options"  onclick="sortbyRelease();"> Sort by Release Date
         </label>
         <label class="btn btn-primary" id="optiontitle">
           <input type="radio" name="options" onclick="sortbyTitle();"> Sort by Title
@@ -39,7 +39,7 @@
   	<div class="row" id="titleview" style="display: none;">
       <div class="col-md-12">
     		{% for book in book_list_title %}
-          <h3><a href="{{ book.title_link }}">{{ book.title }}</a> ({{ book.release_date.year }}) by {{ book.author }}</h3>
+          <h3><a href="{{ book.title_link }}">{{ book.title|upper }}</a> ({{ book.release_date.year }}) — {{ book.author }}</h3>
           {% if book.watch_date.year > 1900 %}
   		      <h5>Read {{ book.watch_date }}</h5>
           {% endif %}
@@ -50,7 +50,7 @@
     <div class="row" id="watchview" style="display: block;">
       <div class="col-md-12">
         {% for book in book_list_watch %}
-          <h3><a href="{{ book.title_link }}">{{ book.title }}</a> ({{ book.release_date.year }}) by {{ book.author }}</h3>
+          <h3><a href="{{ book.title_link }}">{{ book.title|upper }}</a> ({{ book.release_date.year }}) — {{ book.author }}</h3>
           {% if book.watch_date.year > 1900 %}
   		      <h5>Read {{ book.watch_date }}</h5>
           {% endif %}
@@ -61,7 +61,7 @@
     <div class="row" id="releaseview" style="display: none;">
       <div class="col-md-12">
         {% for book in book_list_release %}
-          <h3><a href="{{ book.title_link }}">{{ book.title }}</a> ({{ book.release_date.year }}) by {{ book.author }}</h3>
+          <h3><a href="{{ book.title_link }}">{{ book.title|upper }}</a> ({{ book.release_date.year }}) — {{ book.author }}</h3>
           {% if book.watch_date.year > 1900 %}
   		      <h5>Read {{ book.watch_date }}</h5>
           {% endif %}
@@ -72,7 +72,7 @@
     <div class="row" id="authorview" style="display: none;">
       <div class="col-md-12">
         {% for book in book_list_author %}
-          <h3><a href="{{ book.title_link }}">{{ book.title }}</a> ({{ book.release_date.year }}) by {{ book.author }}</h3>
+          <h3><a href="{{ book.title_link }}">{{ book.title|upper }}</a> ({{ book.release_date.year }}) — {{ book.author }}</h3>
           {% if book.watch_date.year > 1900 %}
             <h5>Read {{ book.watch_date }}</h5>
           {% endif %}
